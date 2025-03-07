@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Dancing Script';
+  src: url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+}
+
+.font-handwriting {
+  font-family: 'Dancing Script', cursive;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out;
+}
