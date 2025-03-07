@@ -1,8 +1,8 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
-import image1 from '../assets/images/1.jpg';
-import image2 from '../assets/images/2.jpg';
+import image1 from '../assets/images/1.1.jpg';
+import image2 from '../assets/images/2.2.jpg';
 import image3 from '../assets/images/3.jpg';
 import image4 from '../assets/images/4.jpg';
 import image5 from '../assets/images/5.jpg';
@@ -16,24 +16,25 @@ import image12 from '../assets/images/12.jpg';
 import image13 from '../assets/images/13.jpg';
 import image14 from '../assets/images/14.jpg';
 import image15 from '../assets/images/15.jpg';
+import kiniem from '../assets/images/kiniem.jpg';
 
 // Define timelineItems with images and dates
 const timelineItems = [
-  { date: 'Tháng 1, 2023', image: image1, description: 'Lần đầu gặp nhau' },
-  { date: 'Tháng 2, 2023', image: image2, description: 'Buổi hẹn đầu tiên' },
-  { date: 'Tháng 3, 2023', image: image3, description: 'Kỷ niệm ngày 8/3' },
-  { date: 'Tháng 4, 2023', image: image4, description: 'Chuyến du lịch đầu tiên' },
-  { date: 'Tháng 5, 2023', image: image5, description: 'Picnic cuối tuần' },
-  { date: 'Tháng 6, 2023', image: image6, description: 'Lễ kỷ niệm 6 tháng' },
-  { date: 'Tháng 7, 2023', image: image7, description: 'Đi biển cùng nhau' },
-  { date: 'Tháng 8, 2023', image: image8, description: 'Camping dưới ánh trăng' },
-  { date: 'Tháng 9, 2023', image: image9, description: 'Lễ hội ánh sáng' },
-  { date: 'Tháng 10, 2023', image: image10, description: 'Halloween vui vẻ' },
-  { date: 'Tháng 11, 2023', image: image11, description: 'Mùa thu lãng mạn' },
-  { date: 'Tháng 12, 2023', image: image12, description: 'Giáng sinh ấm áp' },
-  { date: 'Tháng 1, 2024', image: image13, description: 'Chúc mừng năm mới' },
-  { date: 'Tháng 2, 2024', image: image14, description: 'Valentine ngọt ngào' },
-  { date: 'Tháng 3, 2024', image: image15, description: 'Kỷ niệm 1 năm bên nhau' },
+  { date: 'Tháng 6, 2024', image: image1, description: 'Lần đầu đi chơi cùng nhau' },
+  { date: 'Tháng 7, 2024', image: image2, description: 'Buổi tỏ tình' },
+  { date: 'Tháng 8, 2024', image: image3, description: 'Kỷ niệm ngày 8/3' },
+  { date: 'Không rõ', image: image4, description: 'chưa rõ, mết qué update sau' },
+  { date: 'Không rõ', image: image5, description: 'chưa rõ, mết qué update sau' },
+  { date: 'Tháng 11, 2024', image: image6, description: 'chưa rõ, mết qué update sau' },
+  { date: 'Tháng 12, 2024', image: kiniem, description: 'kỉ niệm 6 tháng' },
+  { date: 'Tháng 1, 2025', image: image8, description: 'chưa rõ, mết qué update sau' },
+  { date: 'Tháng 2, 2025', image: image9, description: 'chưa rõ, mết qué update sau' },
+  { date: 'Tháng 3, 2025', image: image10, description: 'chưa rõ, mết qué update sau' },
+  { date: 'Tháng 4, 2025', image: image11, description: 'chưa rõ, mết qué update sau' },
+  { date: 'Tháng 5, 2025', image: image12, description: 'chưa rõ, mết qué update sau' },
+  { date: 'Tháng 6, 2025', image: image13, description: 'chưa rõ, mết qué update sau' },
+  { date: 'Tháng 7, 2025', image: image14, description: 'chưa rõ, mết qué update sau' },
+  { date: 'Tháng 8, 2025', image: image15, description: 'chưa rõ, mết qué update sau' },
 ];
 
 interface GalleryTimelineProps {

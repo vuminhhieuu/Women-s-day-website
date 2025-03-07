@@ -1,17 +1,18 @@
 import { motion } from 'framer-motion';
 import { Heart, Flower } from 'lucide-react';
-
 interface LetterProps {
   message: string;
   onClose: () => void;
+  buttonText?: string;
+  className?: string;
 }
 
-export function Letter({ message, onClose }: LetterProps) {
+export function Letter({ message, onClose, buttonText = "Đóng", className = "" }: LetterProps) {
   return (
     <motion.div
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
-      className="bg-pink-50 p-8 rounded-lg shadow-xl max-w-lg w-full mx-4 relative overflow-hidden"
+      className={`bg-pink-50 p-8 rounded-lg shadow-xl w-full relative overflow-hidden ${className}`}
     >
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 p-4">
@@ -72,9 +73,9 @@ export function Letter({ message, onClose }: LetterProps) {
           onClick={onClose}
           className="mt-6 px-6 py-2 bg-pink-500 text-white rounded-full hover:bg-pink-600 transition-colors mx-auto block"
         >
-          Xem ảnh kỷ niệm
+          {buttonText}
         </button>
-      </div>
+      </div>      
     </motion.div>
   );
 }

@@ -5,6 +5,7 @@ import { CheckCircle, XCircle, Gift } from 'lucide-react';
 interface QuizProps {
   onComplete: () => void;
   onClose: () => void;
+  buttonText?: string;
 }
 
 type Question = {
@@ -21,28 +22,28 @@ const questions: Question[] = [
     correctAnswer: 1, // Thay đổi đáp án đúng (index bắt đầu từ 0)
   },
   {
-    question: "Kỷ niệm đầu tiên của chúng ta là gì?",
-    options: ["Đi xem phim", "Đi ăn tối", "Đi dạo công viên", "Đi du lịch"],
+    question: "Lần đầu tiên đi chơi ở đâu?",
+    options: ["Rạp phim", "Quán lẩu", "Công viên", "Nhà nghỉ"],
     correctAnswer: 0, // Thay đổi đáp án đúng
   },
   {
     question: "Món ăn yêu thích của tôi là gì?",
-    options: ["Bún bò", "Phở", "Cơm rang", "Pizza"],
-    correctAnswer: 3, // Thay đổi đáp án đúng
-  },
-  {
-    question: "Ngày kỷ niệm của chúng ta là ngày nào?",
-    options: ["14/2", "8/3", "20/10", "20/11"],
+    options: ["Bún bò", "Phở", "Cơm đậu", "Gà rán"],
     correctAnswer: 2, // Thay đổi đáp án đúng
   },
   {
-    question: "Bài hát mà chúng ta thường nghe cùng nhau là gì?",
-    options: ["Cơn mưa ngang qua", "Em của ngày hôm qua", "Có chàng trai viết lên cây", "Making My Way"],
+    question: "Ngày kỷ niệm của chúng ta là ngày nào?",
+    options: ["14/2", "30/6", "20/10", "20/11"],
+    correctAnswer: 1, // Thay đổi đáp án đúng
+  },
+  {
+    question: "Lời tỏ tình của anh là gì",
+    options: ["Ây cu làm người yêu anh nhé", "Có làm người yêu anh không", "Anh muốn có một cuộc tình nghiêm túc nên là em làm người yêu anh nhé", "Yêu hay vào balo"],
     correctAnswer: 2, // Thay đổi đáp án đúng
   }
 ];
 
-export function Quiz({ onComplete, onClose }: QuizProps) {
+export function Quiz({ onComplete, onClose, buttonText = "Hoàn thành" }: QuizProps) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
@@ -157,13 +158,13 @@ export function Quiz({ onComplete, onClose }: QuizProps) {
                   <Gift size={64} className="text-pink-600" />
                 </div>
                 <p className="text-xl font-medium text-gray-800">
-                  Chúc mừng! Bạn đã mở khóa kho ảnh kỷ niệm
+                  Chúc mừng! Bạn đã mở khóa thành công quà 8/3
                 </p>
               </motion.div>
             ) : (
               <div className="mb-8">
                 <p className="text-lg text-gray-700 mb-4">
-                  Hãy thử lại để mở khóa kho ảnh kỷ niệm nhé!
+                  Hãy thử lại để mở khóa quà 8/3 nhé!
                 </p>
                 <p className="text-sm text-gray-500">
                   (Bạn cần đúng ít nhất {passingScore} câu)
@@ -184,9 +185,9 @@ export function Quiz({ onComplete, onClose }: QuizProps) {
               {passed && (
                 <button
                   onClick={onComplete}
-                  className="px-8 py-3 bg-pink-500 text-white rounded-full hover:bg-pink-600 transition-colors font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all"
+                  className="mt-6 px-8 py-3 bg-pink-500 text-white rounded-full hover:bg-pink-600 transition-colors"
                 >
-                  Xem kỷ niệm
+                  {buttonText}
                 </button>
               )}
               

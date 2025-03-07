@@ -99,7 +99,7 @@ export function FinalSurprise({ onClose }: FinalSurpriseProps) {
           className="rounded-lg p-1"
         >
           <h2 className="text-3xl font-bold text-white mb-6 mt-4">
-            Điều Bất Ngờ Cuối Cùng
+            Hết rồi nhưng còn muốn nói
           </h2>
         </motion.div>
 
@@ -114,8 +114,8 @@ export function FinalSurprise({ onClose }: FinalSurpriseProps) {
               Cảm ơn em đã dành thời gian xem hết những kỷ niệm của chúng ta.
             </p>
             <p className="mb-4">
-              Anh/em muốn nói với em rằng: mỗi khoảnh khắc bên em đều là những
-              kỷ niệm đẹp nhất trong cuộc đời anh/em.
+              Anh muốn nói với em rằng: mỗi khoảnh khắc bên em đều là những
+              kỷ niệm đẹp nhất.
             </p>
             <p>
               Chúc em ngày 8/3 thật hạnh phúc và tràn ngập niềm vui!

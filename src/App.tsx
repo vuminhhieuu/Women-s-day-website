@@ -11,13 +11,14 @@ import { Quiz } from './components/Quiz';
 import { FinalSurprise } from './components/FinalSurprise';
 import { FloralAnimation } from './components/FloralAnimation';
 import backgroundMusicFile from './assets/musics/background_music_piano.mp3';
+import letterImage from './assets/images/6.jpg';
 import { motion } from 'framer-motion';
 
 const message = `Chúc mừng ngày 8/3!
 
 Gửi đến người chưa là phụ nữ,
 
-Nhân ngày Quốc tế Phụ nữ, anh muốn gửi đến em những lời chúc tốt đẹp nhất. Cảm ơn em vì đã luôn là nguồn cảm hứng và động lực trong cuộc sống của anh.
+Nhân ngày Quốc tế Phụ nữ, anh muốn gửi đến em những lời chúc tốt đẹp nhất.
 
 Chúc em luôn xinh đẹp, hạnh phúc và thành công trong cuộc sống. Mong rằng nụ cười sẽ luôn nở trên môi em, và mọi ước mơ của em đều sẽ thành hiện thực.
 
@@ -83,6 +84,11 @@ function App() {
 
   const handleQuizComplete = () => {
     setShowQuiz(false);
+    setShowLetter(true);
+  };
+
+  const handleLetterClose = () => {
+    setShowLetter(false);
     setShowGallery(true);
   };
 
@@ -120,35 +126,62 @@ function App() {
 
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-pink-100/10 to-purple-100/20 pointer-events-none" />
 
-      <div className="w-full h-[400px] md:h-[500px] relative">
-        <FloralAnimation />
-      </div>
+      <div className="min-h-screen flex flex-col">
+        <div className="container mx-auto px-4 py-8 flex-1 flex flex-col justify-center">
+          {!showQuiz && !showLetter && !showGallery && !showFinalSurprise && (
+            <>
+              <div className="w-full h-[400px] md:h-[500px] relative">
+                <FloralAnimation />
+              </div>
+              <div className="mt-8 flex justify-center">
+                <GiftBox onClick={() => setShowQuiz(true)} />
+              </div>
+            </>
+          )}
 
-      <div className="container mx-auto px-4 py-8 min-h-screen flex flex-col items-center justify-center relative">
-        {!showQuiz && !showLetter && !showGallery && !showFinalSurprise && (
-          <>
-            <GiftBox onClick={() => setShowQuiz(true)} />
-          </>
-        )}
+          <div className="flex-1 flex flex-col justify-center">
+            {showQuiz && (
+              <Quiz 
+                onComplete={() => {
+                  setShowQuiz(false);
+                  setShowLetter(true);
+                }} 
+                onClose={() => setShowQuiz(false)}
+                buttonText="Khám phá"
+              />
+            )}
 
-        {showQuiz && (
-          <Quiz onComplete={handleQuizComplete} onClose={() => setShowQuiz(false)} />
-        )}
+            {showLetter && (
+              <div className="relative w-full flex items-center justify-center gap-8">
+                <div className="w-1/2">
+                  <Letter
+                    message={message}
+                    onClose={() => {
+                      setShowLetter(false);
+                      setShowGallery(true);
+                    }}
+                    buttonText="Xem ảnh kỷ niệm"
+                  />
+                </div>
+                <div className="w-1/2 h-full">
+                  <img 
+                    src={letterImage} 
+                    alt="Ảnh đẹp" 
+                    className="w-full h-[600px] object-cover rounded-lg shadow-lg" 
+                  />
+                </div>
+              </div>
+            )}
 
-        {showLetter && !showGallery && !showFinalSurprise && (
-          <Letter
-            message={message}
-            onClose={() => setShowGallery(true)}
-          />
-        )}
+            {showGallery && (
+              <GalleryTimeline onClose={handleGalleryClose} />
+            )}
 
-        {showGallery && !showFinalSurprise && (
-          <GalleryTimeline onClose={handleGalleryClose} />
-        )}
-
-        {showFinalSurprise && (
-          <FinalSurprise onClose={() => setShowFinalSurprise(false)} />
-        )}
+            {showFinalSurprise && (
+              <FinalSurprise onClose={() => setShowFinalSurprise(false)} />
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
